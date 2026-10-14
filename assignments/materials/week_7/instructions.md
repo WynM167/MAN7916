@@ -9,27 +9,38 @@
 
 In this assignment you are going to pull together a lot of what you have learned in various weeks of the course. You are going to train a supervised machine learning model to classify abstracts into one of two categories. You will then evaluate the performance of your model.
 
-1. Choose two journals associated with a single subdiscipline (e.g., entrepreneurship, strategy, international business, organizational behavior, etc) and use the Crossref API to download the abstracts of all articles published since 2020 in these journals. Make sure the journals you collect actually have abstracts in the Crossref database... not all do. You should be familiar with how to do this from the Week 2 assignment.
-2. Use either regular expressions or a large language model to remove copyright statements from the abstracts. You should be familiar with how to do this from the week 4 assignment or week 7 materials.
-3. Obtain the embedding vectors for the abstracts using two different approaches: (1) tf-idf and (2) openAI embeddings. You should be familiar with how to do this from the week 5 assignment.
-4. Train supervised machine learning models to classify the abstracts into one of the two categories.
-    * You can use any supervised machine learning model you would like, but you should try at least two different models.
+1. Choose two journals, one each associated with a different subdiscipline (e.g., entrepreneurship, strategy, international business, organizational behavior, etc) and use the Crossref API to download the abstracts of all articles published since 2020 in these journals. You should be familiar with how to do this from the Week 2 assignment. Make sure:
+   1. the journals you collect actually have abstracts in the Crossref database... not all do.
+   2. the type of articles you collect are of type `journal-article` (not editorials, book reviews, etc).
+   3. you make sure that you do not have duplicate abstracts in your dataset - the DOI is a good way to check for duplicates.
+2. Use a large language model to remove copyright statements, HTML/XML tags, and other unwanted content (where present)from the abstracts.
+3. Obtain the embedding vectors for the abstracts using two different approaches: (1) average of GloVe embeddings and (2) openAI embeddings. You should be familiar with how to do this from the week 5 assignment.
+4. Train supervised machine learning models to classify the abstracts into one of the two categories (i.e., the subdisciplines).
+    * You can use any supervised machine learning models you would like, but you should try at least two different models.
     * Make sure to use cross-validation and Grid Search/Randomized Search to optimize the hyperparameters of your models.
-    * Make sure to compare the performance of tf-idf and openAI embedding-based models.
+    * Make sure to compare the performance of GloVe and openAI embedding-based models.
     * You should be familiar with how to do this from this week's tutorials.
-5. Obtain 20 abstracts from the Journal of Management that the model was not trained on. Manually code these as to whether they are in the category of the first journal or the second journal.
+5. Obtain 20 abstracts from the *Journal of Management* that the model was not trained on. Manually code these as to whether they are in the subdiscipline of the first journal or the second journal.
     * Use good manual coding practices from week 3, but don't worry about choosing the *ideal* coders, use eachother as coders for efficiency.
     * Use your model to predict the category of these abstracts and compare the predicted categories to your manual coding.
-6. Write up your results in a text file called `results.docx` in your assignment_7 folder. You should include the following in your write up:
+6. Now, write a system prompt instructing GPT-6.1-Sol to classify abstracts into one of the two categories and use the user prompt to pass along each abstract for classification.
+    * Use good prompt refinement practices - even if the first prompt you write works pretty well, try to refine it to improve the performance of the model. *Do not use the JOM articles to refine your prompt, as you will use these to evaluate the performance of your prompt.*
+    * When you are happy with the system prompt's performance, use the same 20 abstracts from the *Journal of Management* that you manually coded to evaluate the performance of your prompt.
+    * Make sure to compare the performance of your prompt to the performance of your supervised machine learning models.
+7. Write up your results in a text file called `results.docx` in your assignment_7 folder. You should include the following in your write up:
     * The names of the two journals you chose and the number of abstracts you downloaded from each.
-    * A description of how you removed copyright statements from the abstracts.
+    * A description of how you removed copyright (etc.) statements from the abstracts.
     * A description of how you obtained the embedding vectors for the abstracts.
     * A description of the supervised machine learning models you trained, including:
         * The model names
         * The performance metrics for each model (e.g., accuracy, precision, recall, F1 score, MCC)
-        * A comparison of the performance of tf-idf and openAI embedding-based models
+        * A comparison of the performance of GloVe and openAI embedding-based models
         * Identify the best performing model
-    * A description of the 20 abstracts you manually coded from the Journal of Management, including:
+    * A description of the prompt you wrote for GPT-6.1-Sol, including:
+        * The system prompt you wrote and what refinements you made to it along the way
+        * The performance metrics for the prompt (e.g., accuracy, precision, recall, F1 score, MCC)
+        * A comparison of the performance of the prompt to the best performing supervised machine learning model
+    * A description of the 20 abstracts you manually coded from the *Journal of Management*, including:
         * A confusion matrix comparing the manual coding to the model predictions
         * Your assessment of the model's performance based on the confusion matrix
         * Any other interesting observations from your analysis

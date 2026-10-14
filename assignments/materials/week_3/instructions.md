@@ -12,7 +12,7 @@
 
 ## Part 2 - Codebook Development
 
-Collect a small corpus of texts for use in this assignment. This could be news articles, job advertisements, companies' "About Us" webpage texts, or any other set of texts that you are interested in. You will need at least 10 texts if you have relatively long texts (1+ page), substantially more if you are collecting small texts (e.g., instagram posts). You will be using these texts to develop a codebook for a manual content analysis.
+Collect a small corpus of texts for this assignment, such as news articles, job advertisements, companies’ “About Us” webpages, or social media posts. Your independent-coding corpus must contain at least 10 texts. Choose and justify the total number based on text length, expected variation in your constructs, and the time required for both coders to code every text. Use additional, separate texts for coder training and codebook revision.
 
 Choose **two** constructs that you are interested in measuring in the texts *and for which you know there will be variance in your small corpus*. For example, if you are analyzing job advertisements, you might be interested in measuring the extent to which the job advertisement emphasizes certain types of human capital as prerequisites - there is likely to be variance on that in this type of text. On the other hand, there is unlikely to be variance on references to illegal drug use in job advertisements, so that would not be a good construct to measure in this type of text for this assignment. This means before you choose constructs, it would be a good idea to read through your texts to see what types of things are mentioned in them.
 
@@ -31,13 +31,17 @@ In developing the codebook, you may be one of the coders, but you need to also i
        * The decisions you made
        * The challenges you encountered
        * How you resolved those challenges
-       * Make sure to include information about coder training and interrater reliability
+       * Describe coder training, distinguish practice texts from the independent-coding corpus, and explain how you maintained independence during coding.
+       * Include a reliability table with one row per construct. Report the construct name, measurement level, number of texts with usable ratings from both coders, missing-rating counts, Krippendorff’s alpha, and software/module used.
+       * Include the software output or a screenshot supporting each alpha result. Confirm that you calculated these results before consensus or adjudication.
+       * Interpret each result and discuss limitations arising from sample size, limited variation, or ambiguous coding rules. If alpha cannot be calculated, report the reason rather than substituting a value.
+       * Describe any subsequent discussion, adjudication, or proposed codebook revisions.
    3. Briefly discuss how you would proceed if you were going to continue with the content analysis for a full sample instead of the small sample you used for this assignment.
        * What would you do differently?
        * What would you do the same?
        * Why?
 2. Your codebook should be in `codebook.docx`
-3. Your coding form should be in `coding_form.xlsx`
+3. Your filled-out coding form should be in `coding_form.xlsx`
 
 <br>
 

@@ -15,7 +15,7 @@
 
 ## Part 2 - What is the Dean thinking?
 
-You want to stay abreast of what Dean Jarley is thinking, but you don't have time to read all of his blog posts. You decide to scrape the [dean's blog](https://pauljarley.wordpress.com/) to get the text of his posts. Don't worry about getting *all* of the posts, just get the first page of posts.
+You want to stay abreast of what Dean Jarley is thinking, but you don't have time to read all of his blog posts (although he hasn't posted in a while, so you probably could). You decide to scrape the [dean's blog](https://pauljarley.wordpress.com/) to get the text of his posts. Don't worry about getting *all* of the posts, just get the first page of posts.
 
 With the first python file, create a script that:
 
@@ -44,10 +44,10 @@ The CSV file should have the following columns and look something like:
 
 ## Step 3 - Ten Years of Subfield Journal Publications
 
-With the second python file, create a script that accomplishes the following:
+With the second Python file, create a script that accomplishes the following:
 
 1. Choose three journals in your subfield of interest (e.g., OB, Strategy, Entrepreneurship)
-2. Use the CrossRef API to get a list every article they have published since Jan. 1, 2015. Retrieve the following fields:
+2. Use the CrossRef API to get a list every article they have published since Jan. 1, 2016. Retrieve the following fields:
    1. DOI
    2. Title
    3. Number of references
@@ -60,7 +60,7 @@ With the second python file, create a script that accomplishes the following:
 3. Save the information to a CSV file titled "ten_years_api.csv" in the assignment_2 folder
 4. Use this dataset to:
    1. Calculate the correlation between publication year and citation count
-   2. Calculate an ANOVA showing whether there are mean differences by journal.
+   2. Calculate an ANOVA showing whether there are mean differences in citation count by journal.
    3. Save the results of the correlation and ANOVA analyses to "publication_stats.txt" in the assignment_2 folder
 
 The CSV file should have the following columns and look something like:
@@ -68,6 +68,14 @@ The CSV file should have the following columns and look something like:
 | doi | title | n_refs | n_authors | n_cites | url | journal | abstract | pub_year |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 10.1016/j.jbusvent.2021.106175 | Failed but validated? The effect of market validation on persistence and performance after a crowdfunding failure | 152 | 3 | 17 | http://dx.doi.org/10.1016/j.jbusvent.2021.106175 | Journal of Business Venturing | (abstract text) | 2022 |
+
+### Three levels of difficulty for this part of the assignment - go with the one that is most appropriate for your skill/aspiration level:
+
+* Level 1 (easy but time-consuming): Go one journal-year at a time and aggregate the results into a single CSV file. This is the approach is closest to what we did in the tutorial, but it will take more time to complete and is not scalable for actual research. I don't recommend this approach unless you are very new to Python and want to take it slow. You can also use this approach to test your code before moving on to Level 2.
+* Level 2 (medium): Use nested loops to iterate through the journals and years, making the API calls and aggregating the results into a single CSV file. This will be faster than Level 1, but will require more coding and understanding of how to handle situations where the API returns more results than can be returned in a single call.
+* Level 3 (harder but more scalable): Get all articles in the last ten years for all three journals in a single API call. This will be the fastest approach, but will require the more sophisticated coding (about the same level as 2) and deeper understanding of the API.
+  * Hint #1: the `/journals/{issn}/works` endpoint we used in the tutorial limits you to one ISSN per call, but you want multiple issns. Is there another endpoint that will allow you to get all articles for multiple issns?
+  * Hint #2: when you find the appropriate endpoint, you still need to *select only* the results in a fixed number of ISSNs. Another way of putting that is you want to *remove all* results that are not in your three journals of interest. I've carefully worded the italics in this hint to avoid giving away the answer, but if you can think of another wording for what I've said in italics and look for that word in the API documentation, you should be able to find the answer of how to do it. If it takes you more than a few minutes to find the answer, look at the endpoint description [here](https://www.crossref.org/documentation/retrieve-metadata/rest-api/) for a relevant hyperlink.
 
 **The [crossref_api.ipynb](../../../tutorials/crossref_api.ipynb) tutorial notebook should be helpful in completing this assignment**
 

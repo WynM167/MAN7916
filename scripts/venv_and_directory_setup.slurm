@@ -3,12 +3,14 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0-00:15:00
-#SBATCH --error=results-%J.err
-#SBATCH --output=results-%J.out
+#SBATCH --error=results-%j.err
+#SBATCH --output=results-%j.out
 #SBATCH --job-name=MAN7916Setup
 #SBATCH --gres=gpu:1
 
 # This script is intended to be run by man7916launcher, not directly.
+
+set -e
 
 # load modules
 module load cuda/cuda-12.6.0
@@ -30,6 +32,7 @@ cd ..
 
 # Set up virtual environment and install packages
 source ~/MAN7916/.venv/bin/activate
+export NLTK_DATA="$HOME/MAN7916/models"
 python3 -m pip install --upgrade pip wheel setuptools
 python3 -m pip install --upgrade -r requirements_newton.txt
 python3 -m spacy download en_core_web_sm
