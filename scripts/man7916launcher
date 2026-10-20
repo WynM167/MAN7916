@@ -78,39 +78,48 @@ prompt_user() {
         rm -r "$UNSUP_DIR"
       fi
 
-      sbatch ./venv_and_directory_setup.slurm
-      echo "Done..."
-      echo ""
+      if ! submission=$(sbatch --parsable ./venv_and_directory_setup.slurm); then
+        echo "Setup job submission failed. Read the error above."
+        return 1
+      fi
+      setup_job_id="${submission%%;*}"
 
-      echo "========================================================="
-      echo "The Python environment has been successfully set up."
-      echo "The next thing that you need to do is to navigate to the "
-      echo "created folder, request an interactive session, and "
-      echo "run the Python files. To do this, you will need to run the "
-      echo "following command (ignoring the *):"
-      echo "* squeue -u <your username>"
-      echo "(Replace <your username> with your username)"
-      echo ""
-      echo "If the displayed table has a row for you, wait a few minutes "
-      echo "and run that line again - repeating until there is no row for "
-      echo "you. That row is the remnants of this setup script."
-      echo ""
-      echo "When you have no row in the above command, run the following: "
-      echo "* cd ~/MAN7916"
-      echo "* module load cuda/cuda-12.6.0"
-      echo "* module load python/python-3.11.4-oneapi-2023.1.0"
-      echo "* source ./.venv/bin/activate"
-      echo "* srun -p normal -t 0-01:00:00 --gres=gpu:1 --pty bash"
-      echo "(You may have to wait a little bit, you just requested "
-      echo "a compute node on Newton)"
-      echo "* python3 run_sample_ml.py"
-      echo ""
-      echo "When you are done running the python code and are back to the "
-      echo "command prompt, run the following command to release the "
-      echo "compute node so that others can use it."
-      echo "* exit"
-      echo "========================================================="
-      ;;
+      cat <<EOF
+
+Setup job ${setup_job_id} submitted. Setup is still pending.
+
+Check this specific job:
+  squeue -j ${setup_job_id}
+
+Once it leaves the queue, check its result and logs:
+  sacct -j ${setup_job_id} --format=JobID,State,ExitCode
+  less ~/MAN7916/results-${setup_job_id}.out
+  less ~/MAN7916/results-${setup_job_id}.err
+
+Press q to leave less.
+
+Proceed after the job reports COMPLETED with ExitCode 0:0
+and its output contains MAN7916 SETUP CHECKS PASSED.
+
+If it failed or the success message is missing, inspect the logs
+and resolve the problem before running the demo.
+If sacct has no record yet, wait briefly and check again.
+
+After successful setup:
+  cd ~/MAN7916
+  srun -p normal -t 0-01:00:00 --gres=gpu:1 --pty bash
+
+Inside the allocated compute session:
+  cd ~/MAN7916
+  module load cuda/cuda-12.6.0
+  module load python/python-3.11.4-oneapi-2023.1.0
+  source ./.venv/bin/activate
+  export NLTK_DATA="\$HOME/MAN7916/models"
+  python3 -m scripts.run_sample_ml
+
+After the demo returns to the command prompt:
+  exit
+EOF
     [Nn]* )
       echo "You chose to exit. No changes will be made. Goodbye!"
       exit 0

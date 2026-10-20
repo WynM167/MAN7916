@@ -2,7 +2,7 @@
 
 ## Topic: Corpus Collection
 
-## Discussion Leader: TBD
+## Discussion Leader: Aaron
 
 ### Readings - Required
 

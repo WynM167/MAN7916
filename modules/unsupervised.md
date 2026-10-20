@@ -2,7 +2,7 @@
 
 ## Topic: Unsupervised Machine Learning Approaches in Text Analysis
 
-## Discussion Leader: TBD
+## Discussion Leader: Aaron
 
 ### Readings - Required
 
@@ -20,12 +20,15 @@ Complete the following tutorials before class:
 
 ### Readings - Choose Your Own Adventure (you are not restricted to this list)
 
-- Wang, W., Dinh, J. V., Jones, K. S., Upadhyay, S., & Yang, J. (2023). Corporate diversity statements and employees’ online DEI ratings: An unsupervised machine-learning text-mining analysis. *Journal of Business and Psychology, 38*(1), 45-61.
+- Ahn, Y., & Greve, H. R. (2025). Cultural spawning: Founders bringing organizational cultures to their startup. *Organization Science, 36*(1), 411-428.
 - Choudhury, P., Wang, D., Carlson, N. A., & Khanna, T. (2019). Machine learning approaches to facial and text analysis: Discovering CEO oral communication styles. *Strategic Management Journal, 40*(11), 1705-1732.
-- Taeuscher, K., Zhao, E. Y., & Lounsbury, M. (2022). Categories and narratives as sources of distinctiveness: Cultural entrepreneurship within and across categories. *Strategic Management Journal, 43*(10), 2101-2134.
 - Guzman, J., & Li, A. (2023). Measuring founding strategy. *Management Science, 69*(1), 101-118.
-- Ahn, Y., & Greve, H. R. (2024). Cultural spawning: Founders bringing organizational cultures to their startup. *Organization Science*.
+- Jung, J., Zhou, W., & Smith, A. D. (2025). From textual data to theoretical insights: Introducing and applying the word-text-topic extraction approach. *Organizational Research Methods, 28*(2), 182-209.
+- Liu, S., Hickman, L., Dahlander, L., & Piezunka, H. (2026). Textual similarity in organizational research: Review of applications, consistency of methods, and best practice recommendations. *Organizational Research Methods*, 10944281261432629.
+- Taeuscher, K., Zhao, E. Y., & Lounsbury, M. (2022). Categories and narratives as sources of distinctiveness: Cultural entrepreneurship within and across categories. *Strategic Management Journal, 43*(10), 2101-2134.
 - Vossen, A., & Ihl, C. (2020). More than words! How narrative anchoring and enrichment help to balance differentiation and conformity of entrepreneurial products. *Journal of Business Venturing, 35*(6), 106050.
+- Wang, W., Dinh, J. V., Jones, K. S., Upadhyay, S., & Yang, J. (2023). Corporate diversity statements and employees’ online DEI ratings: An unsupervised machine-learning text-mining analysis. *Journal of Business and Psychology, 38*(1), 45-61.
+- Wilcox, K. T., Jacobucci, R., Zhang, Z., & Ammerman, B. A. (2023). Supervised latent Dirichlet allocation with covariates: A Bayesian structural and measurement model of text and covariates. *Psychological Methods, 28*(5), 1178.
 
 
 ### Assignment
