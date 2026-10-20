@@ -1,0 +1,27 @@
+PUBLICATION STATISTICS
+Retrieved: 2026-10-20
+Publication window: 2016-01-01 to 2026-10-20
+Unique articles: 1660
+
+CITATION COUNT BY JOURNAL
+                                        n  mean     SD
+journal                                               
+Entrepreneurship Theory and Practice  654 66.40 148.68
+Journal of Business Venturing         609 66.10  91.18
+Strategic Entrepreneurship Journal    397 41.55 106.67
+
+PEARSON CORRELATION: publication year and citations
+r(1658) = -0.339, p < .001, N = 1660.
+
+ONE-WAY ANOVA: citation count by journal
+F(2, 1657) = 6.367, p = 0.002.
+
+NOTES
+Citation counts are Crossref counts at retrieval.
+Missing values were excluded separately for each analysis.
+Missing abstracts and other unavailable fields are blank.
+Journal-article records may include editorials or corrections.
+Older articles have had more time to accumulate citations.
+ANOVA compares raw means without adjusting for publication year.
+Citation counts can be skewed and have unequal variances;
+the classical ANOVA should therefore be interpreted cautiously.
