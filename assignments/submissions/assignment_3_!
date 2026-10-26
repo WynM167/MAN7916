@@ -1,0 +1,62 @@
+python assignments/submissions/assignment_3/calculate_alpha.py
+from pathlib import Path
+import numpy as np
+import krippendorff
+# Main texts, in this order:
+# R002, R003, R005, R007, R010,
+# R012, R013, R015, R016, R019
+# Each row represents one coder.
+strain = np.array([
+    [0, 1, 0, 0, 2, 2, 0, 1, 1, 1],  # Coder 1
+    [0, 1, 0, 1, 2, 2, 0, 1, 1, 1],  # Coder 2
+], dtype=float)
+
+task_fulfillment = np.array([
+    [1, 1, 2, 0, 0, 0, 2, 2, 2, 0],  # Coder 1
+    [1, 1, 2, 0, 0, 0, 2, 2, 2, 0],  # Coder 2
+], dtype=float)
+
+# If a rating is missing, replace it with np.nan.
+# Keep 0 as a valid score.
+
+
+def calculate_results(name, ratings):
+    """Calculate ordinal alpha and summarize paired ratings."""
+    alpha = krippendorff.alpha(
+        reliability_data=ratings,
+        level_of_measurement="ordinal",
+        value_domain=[0, 1, 2],
+    )
+
+    # Identify texts with usable scores from both coders.
+    paired = ~np.isnan(ratings).any(axis=0)
+    paired_n = int(paired.sum())
+
+    missing = np.isnan(ratings).sum(axis=1)
+    matching = int(
+        (ratings[0, paired] == ratings[1, paired]).sum()
+    )
+    agreement = matching / paired_n if paired_n else np.nan
+
+    return (
+        f"{name}\n"
+        f"Measurement level: ordinal\n"
+        f"Paired usable texts: {paired_n}\n"
+        f"Missing ratings: Coder 1 = {missing[0]}; "
+        f"Coder 2 = {missing[1]}\n"
+        f"Krippendorff's alpha: {alpha:.12f}\n"
+        f"Exact agreement: {matching}/{paired_n} "
+        f"({agreement:.1%})\n"
+    )
+results = "\n".join([
+    calculate_results("Interactional strain", strain),
+    calculate_results("Task fulfillment", task_fulfillment),
+])
+print(results)
+
+# Save the output beside this Python script.
+output_file = Path(__file__).resolve().parent / "alpha_results.txt"
+output_file.write_text(results, encoding="utf-8")
+
+print(f"Results saved to: {output_file}")
+
