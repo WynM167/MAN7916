@@ -24,3 +24,4 @@ scratch/*
 
 # VS Code Configuration
 .vscode/
+/local_data/topic_model/
